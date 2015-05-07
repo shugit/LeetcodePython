@@ -1,34 +1,16 @@
-def getResult(nums,num1,num2):
-    if num1 == num2:
-        #print 'equal'
-        index1 = nums.index(num1)+1
-        index2 = nums.index(num2,index1)+1
-    else:
-        index1 = nums.index(num1)+1
-        index2 = nums.index(num2)+1
-    return [index1,index2] if index1<index2 else [index2,index1]
-
 class Solution:
     # @param {integer[]} nums
     # @param {integer} target
     # @return {integer[]}
     def twoSum(self, nums, target):
-        sorted_nums = sorted(nums)
-        print sorted_nums
-        for i in range(0,len(sorted_nums)):
-            print 'i:sorted[%d]=%d' %(i,sorted_nums[i])
-            if sorted_nums[i] + sorted_nums[i+1] < target:
-                for j in reversed(range(i+1,len(sorted_nums))):
-                    print 'j:sorted[%d]=%d' %(j,sorted_nums[j])
-                    if sorted_nums[0] + sorted_nums[j] < target:
-                        if sorted_nums[i] + sorted_nums[j] == target:
-                            return getResult(nums,sorted_nums[i],sorted_nums[j])
-                    elif sorted_nums[0]+sorted_nums[j] == target:
-                        return getResult(nums,sorted_nums[0],sorted_nums[j])
-            elif sorted_nums[i]+sorted_nums[i+1] == target:
-                return getResult(nums,sorted_nums[i],sorted_nums[i+1])
-            else:
-                break
+        table = {}
+        for i in range(len(nums)):
+            table[str(nums[i])] = str(i)
+        for num1,index1 in enumerate(table):
+            for num2, index2 in enumerate(table):
+                print 'table[%s]=%s, table[%s]=%s'%(num1,index1,num2,index2)
+                if num1+num2 == target:
+                    return [index1, index2]
         return None
 
 
