@@ -1,3 +1,4 @@
+#unfinished
 total = 26
 
 def get_char(number, power):
