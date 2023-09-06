@@ -6,7 +6,7 @@ class Solution:
 
         for i in range(2, n+1): 
             dp[i] = i
-            for j in range(2,i):
+            for j in range(2,i//2+1):
                 if i % j == 0:
                     dp[i] = min(dp[j] + i//j, dp[i])
 
