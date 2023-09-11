@@ -19,6 +19,6 @@ class Solution:
                     if dp[left+1][right-1] == True:
                         dp[left][right] = True
                         cnt += 1
-        print(dp)
+        # print(dp)
         return cnt
                         
