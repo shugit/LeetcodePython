@@ -7,7 +7,7 @@ class Solution:
                 if board[i][j] == ".":
                     continue
                 if  board[i][j] in h:
-                    print("1", i,j)
+                    # print("1", i,j)
                     return False
                 h.add(board[i][j])
         for i in range(n):
@@ -16,7 +16,7 @@ class Solution:
                 if board[j][i] == ".":
                     continue
                 if board[j][i] in h:
-                    print("2", i,j)
+                    # print("2", i,j)
                     return False
                 h.add(board[j][i])
         for offset_i in range(0,3):
