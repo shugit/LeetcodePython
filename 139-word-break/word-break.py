@@ -5,7 +5,7 @@ class Solution:
         dp[0] = True
         for i in range(1, n+1):
             for j in range(0,i):
-                cur = s[j:i] #实际取到的是j~i-1，因为i从1开始，j从0开始，所以正好
+                cur = s[j:i] 
                 if dp[i] is True:
                     break
                 else:
