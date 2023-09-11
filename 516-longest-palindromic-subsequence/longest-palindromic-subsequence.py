@@ -1,7 +1,7 @@
 class Solution:
     def longestPalindromeSubseq(self, s: str) -> int:
         size = len(s)
-        dp = [ [0 for _ in range(size+1)] for _ in range(size+1)]
+        dp = [ [0 for _ in range(size)] for _ in range(size)]
         for length in range(1, size+1):
             limit = size - length + 1
             for i in range(0, limit):
