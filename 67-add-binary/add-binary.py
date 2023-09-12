@@ -1,5 +1,6 @@
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
+        return self.add2(a,b)
         res = ""
         carry = 0
         if len(a) > len(b):
@@ -18,3 +19,8 @@ class Solution:
         if carry > 0:
             res = str(carry) + res
         return res
+    def add2(self, a, b):
+        a,b = int(a,2), int(b,2)
+        res = a+b
+        print(res)
+        return bin(res)[2:]
