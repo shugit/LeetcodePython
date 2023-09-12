@@ -1,2 +1,3 @@
 # LeetcodePython
-Leetcode Solution written in Python for exercise
+Leetcode Python solution
+Synced
