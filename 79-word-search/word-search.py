@@ -12,8 +12,8 @@ class Solution:
                 n = prev_n + dire[1]
                 if m < 0 or n < 0 or m >= len(board) or n >= len(board[m]):
                     continue
-                if board[m][n] != -1 and board[m][n] == word[i]:
-                    board[m][n] = -1
+                if board[m][n] != None and board[m][n] == word[i]:
+                    board[m][n] = None
                     res = bt(curStr+word[i], i+1, m, n)
                     if res:
                         return True
@@ -21,7 +21,7 @@ class Solution:
         for m in range(len(board)):
             for n in range(len(board[m])):
                 if board[m][n] == word[0]:
-                    board[m][n] = -1
+                    board[m][n] = None
                     res = bt(word[0],1,m,n)
                     if res:
                         return True
