@@ -10,12 +10,12 @@ class Solution:
             if not node:
                 return "null"
             s =  ",".join([str(node.val), preorder(node.left), preorder(node.right)])
-            if len(subtrees[s]) == 1:
+            if subtrees[s] == 1:
                 res.append(node)
-            subtrees[s].append(node)
+            subtrees[s] += 1
             return s
 
-        subtrees = defaultdict(list)
+        subtrees = defaultdict(int)
         res = []
         preorder(root)
         return res
