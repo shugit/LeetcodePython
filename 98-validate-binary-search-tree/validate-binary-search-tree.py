@@ -12,6 +12,6 @@ class Solution:
             if not (left < curr.val < right):
                 return False
             return valid(curr.left, left, curr.val) and valid(curr.right, curr.val, right)
-        return valid(root, float("-inf"), float("inf"))
+        return valid(root, -inf, inf)
             
     
