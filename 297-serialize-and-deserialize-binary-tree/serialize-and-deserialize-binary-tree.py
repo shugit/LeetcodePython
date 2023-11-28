@@ -16,7 +16,7 @@ class Codec:
 
         def serial(node):
             if not node:
-                return "null"
+                return "N"
             return ",".join([str(node.val), serial(node.left), serial(node.right)])
         res = serial(root)
         print(res)
@@ -30,7 +30,7 @@ class Codec:
         :rtype: TreeNode
         """
         def deser():
-            if node_list[0] == "null":
+            if node_list[0] == "N":
                 node_list.pop(0)
                 return None
             node = TreeNode(node_list.pop(0))
