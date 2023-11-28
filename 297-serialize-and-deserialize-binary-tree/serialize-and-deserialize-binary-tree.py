@@ -29,14 +29,14 @@ class Codec:
         :rtype: TreeNode
         """
         def deser():
-            if node_list[0] == "N":
-                node_list.pop(0)
+            val = node_list.popleft()
+            if val == "N":
                 return None
-            node = TreeNode(node_list.pop(0))
+            node = TreeNode(val)
             node.left = deser()
             node.right = deser()
             return node
-        node_list = data.split(",")
+        node_list = deque(data.split(","))
         return deser()
 
 # Your Codec object will be instantiated and called as such:
