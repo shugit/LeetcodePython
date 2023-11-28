@@ -17,7 +17,7 @@ class Codec:
         def serial(node):
             if not node:
                 return "N"
-            return ",".join([str(node.val), serial(node.left), serial(node.right)])
+            return f"{node.val},{serial(node.left)},{serial(node.right)}"
         res = serial(root)
         print(res)
         return res
