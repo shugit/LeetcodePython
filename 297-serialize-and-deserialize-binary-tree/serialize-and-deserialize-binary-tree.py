@@ -19,7 +19,6 @@ class Codec:
                 return "N"
             return f"{node.val},{serial(node.left)},{serial(node.right)}"
         res = serial(root)
-        print(res)
         return res
         
 
