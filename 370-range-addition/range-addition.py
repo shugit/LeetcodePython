@@ -4,9 +4,7 @@ class Solution:
         for start,end,num in updates:
             arr[start] += num
             arr[end + 1] -= num
-        prefix = arr[0]
         for i in range(1, length):
-            arr[i] += prefix
-            prefix = arr[i]
+            arr[i] += arr[i-1]
             
         return arr[0:length]
