@@ -1,5 +1,5 @@
 class Solution:
-    def lengthOfLIS(self, nums: List[int]) -> int:
+    def lengthOfLIS2(self, nums: List[int]) -> int:
         n = len(nums)
         dp = [1 for _ in range(n)]
         for i in range(n,-1,-1):
@@ -9,5 +9,12 @@ class Solution:
         # print(dp)
         return max(dp)  
 
-    def lengthOfLIS2(self, nums: List[int]) -> int:
-        return 0
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        dp = []
+        for num in nums:
+            i = bisect_left(dp, num)
+            if i == len(dp):
+                dp.append(num)
+            else:
+                dp[i] = num
+        return len(dp)
