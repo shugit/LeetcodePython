@@ -12,18 +12,13 @@ class Solution2:
         return max(dp)
 
 class Solution:
-    def maxEnvelopes(self, arr: List[List[int]]) -> int:
-        # sort increasing in first dimension and decreasing on second
-        arr.sort(key=lambda x: (x[0], -x[1]))
-
-        def lis(nums):
-            dp = []
-            for i in range(len(nums)):
-                idx = bisect_left(dp, nums[i])
-                if idx == len(dp):
-                    dp.append(nums[i])
-                else:
-                    dp[idx] = nums[i]
-            return len(dp)
-        # extract the second dimension and run the LIS
-        return lis([i[1] for i in arr])
+    def maxEnvelopes(self, envelopes: List[List[int]]) -> int:
+        envelopes.sort(key=lambda x: (x[0], -x[1]))        
+        res = []
+        for _, h in envelopes:
+            idx = bisect_left(res, h)
+            if idx == len(res):
+                res.append(h)
+            else:
+                res[idx]=h
+        return len(res)                                                                                              
