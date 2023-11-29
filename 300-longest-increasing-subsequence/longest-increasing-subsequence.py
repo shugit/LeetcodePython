@@ -6,4 +6,8 @@ class Solution:
             for j in range(i+1, n):
                 if nums[i] < nums[j]:
                     dp[i] = max(dp[i], dp[j] + 1)
+        # print(dp)
         return max(dp)  
+
+    def lengthOfLIS2(self, nums: List[int]) -> int:
+        return 0
