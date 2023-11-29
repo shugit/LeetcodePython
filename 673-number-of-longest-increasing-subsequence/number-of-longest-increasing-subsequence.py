@@ -11,7 +11,7 @@ class Solution:
                     elif dp[j] + 1 == dp[i]:
                         count[i] += count[j]
                     
-        print(dp, count)
+        # print(dp, count)
         maxi = max(dp) 
         cnt = 0
         for i,n in enumerate(dp):
