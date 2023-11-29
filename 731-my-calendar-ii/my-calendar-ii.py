@@ -1,16 +1,22 @@
 # from collections import defaultdict
+from sortedcontainers import SortedDict
 class MyCalendarTwo:
 
     def __init__(self):
-        self.books = defaultdict(int)
+        self.books = SortedDict()
 
     def book(self, start: int, end: int) -> bool:
-        self.books[end] -= 1
-        self.books[start] += 1
-        sort_book = sorted(self.books)
+        if end in self.books:
+            self.books[end] -= 1
+        else:
+            self.books[end] = -1
+        if start in self.books:
+            self.books[start] += 1
+        else:
+            self.books[start] = 1
         prefix = 0
-        for key in sort_book:
-            prefix += self.books[key]
+        for key,value in self.books.items():
+            prefix += value
             if prefix >= 3:
                 self.books[start] -= 1
                 self.books[end] += 1
