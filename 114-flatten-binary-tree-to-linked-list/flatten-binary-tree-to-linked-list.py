@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def flatten(self, root: Optional[TreeNode]) -> None:
+    def flatten2(self, root: Optional[TreeNode]) -> None:
         """
         Do not return anything, modify root in-place instead.
         """
@@ -22,3 +22,19 @@ class Solution:
             return last
         preorder(root)
         return 
+
+    def flatten(self, root: Optional[TreeNode]) -> None:
+        node_list = []
+        def preorder(curr):
+            if not curr:
+                return
+            node_list.append(curr)
+            preorder(curr.left)
+            preorder(curr.right)
+        preorder(root)
+        for i in range(0, len(node_list)):
+            node_list[i].left = None
+            if i + 1 < len(node_list):
+                node_list[i].right = node_list[i+1]
+        return
+
