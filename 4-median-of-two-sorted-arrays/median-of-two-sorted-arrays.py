@@ -15,7 +15,6 @@ class Solution:
         while p2 < len(nums2):
             arr.append(nums2[p2])
             p2 += 1
-        print(arr)
         n = len(arr)
         if  n % 2 == 1:
             return arr[n//2] 
