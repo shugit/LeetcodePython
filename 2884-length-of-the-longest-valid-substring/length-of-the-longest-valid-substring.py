@@ -1,5 +1,5 @@
 class Solution:
-    def longestValidSubstring(self, word: str, forbidden: List[str]) -> int:
+    def longestValidSubstring2(self, word: str, forbidden: List[str]) -> int:
         def build_trie():
             root = {}
             for w in forbidden:
@@ -32,3 +32,18 @@ class Solution:
             # print(length, j-i)
             maxi = max(maxi, j-i)
         return maxi
+
+    def longestValidSubstring(self, word: str, forbidden: List[str]) -> int:
+        s = set(forbidden)
+        n = len(word)
+        left = 0
+        ans = 0
+        for right in range(0, len(word)):
+            cur = right
+            while cur >= left and cur > right - 10:
+                if word[cur:right + 1] in s:
+                    left = cur + 1
+                    break
+                cur -= 1
+            ans = max(ans, right - left + 1)
+        return ans
