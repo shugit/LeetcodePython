@@ -9,10 +9,10 @@ class Solution:
                 s,e = left, right
                 continue
             elif e < right:
-                print(left,right)
+                # print(left,right)
                 count += 1
             else:
                 count += 1
-                print(s,e)
+                # print(s,e)
                 s,e = left, right
         return count
