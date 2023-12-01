@@ -3,10 +3,9 @@ class Solution:
         intervals.sort()
         if not intervals:
             return True
-        s, e = intervals[0]
-        for i, (left, right) in enumerate(intervals[1:]):
-            if e <= left:
-                s,e = left, right
-            else:
+        # print(intervals)
+        for i in range(1, len(intervals)):
+            # print(i,intervals[i-1], intervals[i])
+            if intervals[i-1][1] > intervals[i][0]:
                 return False
         return True
