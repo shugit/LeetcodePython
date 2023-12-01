@@ -8,7 +8,6 @@ class Solution:
                 res.append([s,e])
                 s, e = left, right
             else:
-                # s = min(left, s)
                 e = max(right, e)
         res.append([s,e])
         return res
