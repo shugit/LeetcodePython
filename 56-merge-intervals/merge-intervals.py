@@ -7,8 +7,8 @@ class Solution:
             if e < left:
                 res.append([s,e])
                 s, e = left, right
-            elif s > right:
-                res.append([left,right])
+            # elif s > right:
+                # res.append([left,right])
             else:
                 s = min(left, s)
                 e = max(right, e)
