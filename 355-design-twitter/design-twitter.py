@@ -16,7 +16,8 @@ class Twitter:
         for fId in self.f[userId]:
             for i in range(0, min(10, len(self.t[fId]))):
                 ts, tId = self.t[fId][i]
-                heapq.heappush(arr, (-ts, tId))
+                arr.append((-ts, tId))
+        heapq.heapify(arr)
         res = []
         for i in range(0, min(10, len(arr))):
             res.append(heapq.heappop(arr)[1])
