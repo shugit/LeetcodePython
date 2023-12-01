@@ -1,36 +1,28 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
-        state = [["."] * n for _ in range(n)]  # Start with an empty board
-        res = []
-
-        visited_cols = set()
-        visited_diagonals = set()
-        visited_antidiagonals = set()
-
-        def backtrack(row):
-            if row == n:
-                res.append(["".join(row) for row in state])
+        col=[]
+        posdiag=[]
+        negdiag=[]
+        ans=[]
+        board=[['.']*n for i in range(n)]
+        def backtrack(r):
+            if r==n:
+                l=["".join(i) for i in board]
+                ans.append(l)
                 return
+            for c in range(n):
+                if c in col or (r+c) in posdiag or (r-c) in negdiag:
+                    continue
+                board[r][c]="Q"
+                col.append(c)
+                posdiag.append(r+c)
+                negdiag.append(r-c)
 
-            for col in range(n):
-                diagonal_difference = row - col
-                diagonal_sum = row + col
+                backtrack(r+1)
 
-                if not (col in visited_cols or
-                        diagonal_difference in visited_diagonals or
-                        diagonal_sum in visited_antidiagonals):
-
-                    visited_cols.add(col)
-                    visited_diagonals.add(diagonal_difference)
-                    visited_antidiagonals.add(diagonal_sum)
-                    state[row][col] = 'Q'
-                    backtrack(row + 1)
-
-                    visited_cols.remove(col)
-                    visited_diagonals.remove(diagonal_difference)
-                    visited_antidiagonals.remove(diagonal_sum)
-                    state[row][col] = '.'
-
+                board[r][c]="."
+                col.remove(c)
+                posdiag.remove(r+c)
+                negdiag.remove(r-c)
         backtrack(0)
-        return res
-        # Please Upvote me 
+        return ans
