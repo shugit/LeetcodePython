@@ -7,12 +7,10 @@ class Solution:
         i = 0
         for q in sortQ:
             while i < len(intervals):
-                left = intervals[i][0]
-                right = intervals[i][1]
-                if left > q:
+                if intervals[i][0] > q:
                     break
-                size = right - left + 1
-                heapq.heappush(minHeap, (size, right))
+                size = intervals[i][1] - intervals[i][0] + 1
+                heapq.heappush(minHeap, (size, intervals[i][1]))
                 i += 1
             while minHeap and minHeap[0][1] < q:
                 heapq.heappop(minHeap)
