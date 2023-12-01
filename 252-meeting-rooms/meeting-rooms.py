@@ -7,7 +7,6 @@ class Solution:
         for i, (left, right) in enumerate(intervals[1:]):
             if e <= left:
                 s,e = left, right
-                continue
             else:
                 return False
         return True
