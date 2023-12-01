@@ -15,11 +15,12 @@ class Solution:
             for i in q:
                 if i == len(arr) - 1:
                     return step
-                for next_i in g[arr[i]]:
-                    if next_i not in visited:
-                        visited.add(next_i)
-                        level.append(next_i)
-                g[arr[i]].clear()
+                if arr[i] in g:
+                    for next_i in g[arr[i]]:
+                        if next_i not in visited:
+                            visited.add(next_i)
+                            level.append(next_i)
+                    del g[arr[i]]
                 if i - 1 >= 0 and i-1 not in visited:
                     visited.add(i-1)
                     level.append(i-1)
