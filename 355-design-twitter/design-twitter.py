@@ -3,20 +3,24 @@ class Twitter:
     def __init__(self):
         self.f = defaultdict(set)
         # self.t = defaultdict(deque)
-        self.t = deque()
+        self.t = defaultdict(deque)
+        self.c = 0
 
     def postTweet(self, userId: int, tweetId: int) -> None:
         self.f[userId].add(userId)
-        self.t.appendleft([userId, tweetId])
+        self.t[userId].appendleft([self.c, tweetId])
+        self.c += 1
 
     def getNewsFeed(self, userId: int) -> List[int]:
         arr = []
-        for uid, tid in self.t:
-            if len(arr) == 10:
-                break
-            if uid in self.f[userId]:
-                arr.append(tid)
-        return arr
+        for fId in self.f[userId]:
+            for i in range(0, min(10, len(self.t[fId]))):
+                ts, tId = self.t[fId][i]
+                heapq.heappush(arr, (-ts, tId))
+        res = []
+        for i in range(0, min(10, len(arr))):
+            res.append(heapq.heappop(arr)[1])
+        return res
 
 
     def follow(self, followerId: int, followeeId: int) -> None:
