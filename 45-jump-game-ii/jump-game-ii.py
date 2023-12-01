@@ -7,8 +7,8 @@ class Solution:
             if nums[i]+i >= n:
                 dp[i] = 1
                 continue
-            for step in range(1, nums[i] + 1):
-                if i + step <= n:
+            for step in range(1, min(nums[i] + 1, n - i)):
+                # if i + step <= n:
                     dp[i] = min(dp[i],  dp[ i + step ] + 1)
         return dp[0]
 
