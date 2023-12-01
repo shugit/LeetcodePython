@@ -7,11 +7,11 @@ class Twitter:
         self.c = 0
 
     def postTweet(self, userId: int, tweetId: int) -> None:
-        self.f[userId].add(userId)
         self.t[userId].appendleft([self.c, tweetId])
         self.c += 1
 
     def getNewsFeed(self, userId: int) -> List[int]:
+        self.f[userId].add(userId)
         arr = []
         for fId in self.f[userId]:
             for i in range(0, min(10, len(self.t[fId]))):
