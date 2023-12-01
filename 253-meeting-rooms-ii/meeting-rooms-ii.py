@@ -8,13 +8,9 @@ class Solution:
         for left, right in intervals:
             h[left] += 1
             h[right] -= 1
-        # print(h)
-        arr = list(h.items())
-        arr.sort()
         prefix = 0
         maxi = -inf
-        for i,val in arr:
+        for i,val in sorted(h.items()):
             prefix += val
             maxi = max(prefix, maxi)
-
         return maxi
