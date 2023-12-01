@@ -9,4 +9,8 @@ class Solution:
                 for step in range(1, nums[i]+1):
                     if dp[i + step] == True:
                         dp[i] = True
+                        break
         return dp[0]
+
+    def canJump2(self, nums: List[int]) -> bool:
+        return False
