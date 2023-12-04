@@ -22,10 +22,9 @@ class Solution:
     def sol(self, heights):
         p = []
         res = []
+        maxi = -inf
         for i in range(len(heights)-1, -1, -1):
-            if not p or -p[0] < heights[i]:
+            if maxi < heights[i]:
                 res.append(i)
-            while p and -p[0] <= heights[i]:
-                heapq.heappop(p)
-            heapq.heappush(p, -heights[i])
+                maxi = heights[i]
         return sorted(res)
