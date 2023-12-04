@@ -19,12 +19,13 @@ class Solution:
                 max_height = heights[i]
         stack.reverse()
         return stack
+
     def sol(self, heights):
         p = []
-        res = []
+        res = deque()
         maxi = -inf
         for i in range(len(heights)-1, -1, -1):
             if maxi < heights[i]:
-                res.append(i)
+                res.appendleft(i)
                 maxi = heights[i]
-        return sorted(res)
+        return res
