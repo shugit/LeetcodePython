@@ -12,7 +12,7 @@ class Solution:
         return False
 
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-        h = defaultdict(int)
+        h = {}
         for i in range(len(nums)):
             if nums[i] in h:
                 if i - h[nums[i]] <= k:
