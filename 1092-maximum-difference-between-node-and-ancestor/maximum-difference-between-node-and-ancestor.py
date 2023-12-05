@@ -11,10 +11,9 @@ class Solution:
         maxi = -inf
         def dfs(cur, curMax, curMin):
             nonlocal maxi
-            if not cur:
-                maxi = max(maxi, abs(curMax - curMin))
-                return
             maxi = max(maxi, abs(curMax - curMin))
+            if not cur:
+                return
             curMin = min(curMin, cur.val)
             curMax = max(curMax, cur.val)
             dfs(cur.left, curMax,curMin )
