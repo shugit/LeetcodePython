@@ -13,7 +13,7 @@ class Solution:
           tail = tail.next
           n += 1
         tail.next = head
-        l = head
+        # l = head
         r = head
         for i in range(0, n - k % n - 1):
           r = r.next
