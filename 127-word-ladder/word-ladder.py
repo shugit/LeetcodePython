@@ -8,7 +8,7 @@ class Solution:
         for j in range(len(word)):
           p=word[:j] + "*" + word[j+1:]
           pattern[p].add(word)
-      print(pattern)
+      # print(pattern)
       step = 1
       visited = set([beginWord])
       q = deque([(beginWord, 1)])
