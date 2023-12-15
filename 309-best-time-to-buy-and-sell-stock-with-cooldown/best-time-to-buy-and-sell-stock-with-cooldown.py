@@ -1,5 +1,5 @@
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
+    def maxProfit2(self, prices: List[int]) -> int:
         dp = {}
         def dfs(i, buying):
             if i >= len(prices):
@@ -16,3 +16,13 @@ class Solution:
                 dp[(i, buying)] = max(sell, cooldown)
             return dp[(i, buying)]
         return dfs(0, True)
+
+    def maxProfit(self, prices: List[int]) -> int:
+        reset, hold, sold = 0, -float('inf'), -float('inf')
+        for price in prices:
+            prev_sold = sold
+            sold = hold + price
+            hold = max(hold, reset - price)
+            reset = max(reset, prev_sold)
+        return max(reset, sold)
+            
