@@ -7,20 +7,23 @@ class Solution:
 
 
     def prim(self, points):
-        n = len(points)
-        heap = [(0,0)]
-        in_mst = [False] * n
-        mst_cost = 0
-        edges_used = 0
-        while edges_used < n:
-            weight, curr_node = heapq.heappop(heap)
-            if in_mst[curr_node]:
+        n = 0
+        q = [(0,0)]
+        visited = [False] * len(points)
+        res = 0
+
+        while n < len(points):
+            w, curr = heapq.heappop(q)
+            if visited[curr]:
                 continue
-            in_mst[curr_node] = True
-            mst_cost += weight
-            edges_used += 1
-            for next_node in range(n):
-                if not in_mst[next_node]:
-                    next_weight = abs(points[curr_node][0] - points[next_node][0]) + abs(points[curr_node][1] - points[next_node][1])
-                    heapq.heappush(heap, (next_weight, next_node))
-        return mst_cost
+            visited[curr] = True
+            res += w
+            n += 1
+            cur_p = points[curr]
+            for i, p in enumerate(points):
+                if not visited[i]:
+                    # print(i,p, cur_p)
+                    next_w = abs(p[0] - cur_p[0]) + abs(p[1] - cur_p[1])
+                    heapq.heappush(q, (next_w, i))
+                    # print(q)
+        return res
