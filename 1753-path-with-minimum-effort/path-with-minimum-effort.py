@@ -1,7 +1,7 @@
 class Solution:
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
-        return self.kruskal(heights)
-        # return self.minheap(heights)
+        # return self.kruskal(heights)
+        return self.minheapMethod(heights)
 
     def kruskal(self, heights):
         m = len(heights)
@@ -52,12 +52,26 @@ class Solution:
 
 
 
-
-
-        return 0
-            
-
-
-
-    def minheap(self, heights):
-        return 0
+    def minheapMethod(self, heights):
+        m, n = len(heights), len(heights[0])
+        if m == n == 1:
+            return 0
+        def getId(i,j):
+            nonlocal n
+            return i * n + j
+        q = [[0,0,0]]
+        visited = [False] * (m*n)
+        while q:
+            maxi, i, j = heapq.heappop(q)
+            if i == m - 1 and j == n-1:
+                return maxi
+            idx = getId(i,j)
+            if visited[idx]:
+                continue
+            visited[idx] = True
+            for stepI, stepJ in [[0,1],[0,-1],[1,0], [-1,0]]:
+                nextI, nextJ = i + stepI, j + stepJ
+                if 0 <= nextI < m and 0 <= nextJ < n and not visited[getId(nextI, nextJ)]:
+                    w = abs(heights[i][j] - heights[nextI][nextJ])
+                    heapq.heappush(q, [max(w, maxi), nextI, nextJ])
+        return -1
