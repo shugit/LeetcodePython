@@ -11,6 +11,6 @@ class Solution:
                         if nb not in visited:
                             q.append(nb)
                             visited[nb] = 1 - visited[cur]
-                        if visited[nb] == visited[cur]:
+                        elif visited[nb] == visited[cur]:
                             return False
         return True
