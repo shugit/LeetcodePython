@@ -3,10 +3,10 @@ class Solution:
         visited = {}
         for i, ns in enumerate(graph):
             if i not in visited:
-                q = deque([i])
+                q = [i]
                 visited[i] = 0
                 while q:
-                    cur = q.popleft()
+                    cur = q.pop()
                     for nb in graph[cur]:
                         if nb not in visited:
                             q.append(nb)
