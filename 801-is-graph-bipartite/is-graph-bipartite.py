@@ -5,9 +5,9 @@ class Solution:
             if i not in visited:
                 q = deque([i])
                 visited[i] = 0
-                # for n in ns:
-                    # q.append(n)
-                    # visited[n] = 1
+                for n in ns:
+                    q.append(n)
+                    visited[n] = 1
                 while q:
                     cur = q.pop()
                     for nb in graph[cur]:
