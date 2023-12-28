@@ -17,7 +17,7 @@ class Solution:
         # print(g)
         # print(in_degree)
         for node, count in in_degree.items():
-            print(node,count)
+            # print(node,count)
             if count == 0:
                 q.append(node)
         while q:
