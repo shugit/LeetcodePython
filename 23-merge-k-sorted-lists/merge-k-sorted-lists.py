@@ -27,6 +27,7 @@ class Solution:
             curr = curr.next
             p2 = p2.next
         return dummy.next
+        
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         def merge(l1,l2):
             dummy = ListNode(-1)
@@ -55,8 +56,8 @@ class Solution:
         if not lists:
             return None
         while len(lists) > 1:
-            l1 = lists.pop(0)
-            l2 = lists.pop(0)
+            l1 = lists.pop()
+            l2 = lists.pop()
             merged_list = self.merge2(l1,l2)
             lists.append(merged_list)
         return lists[0]
