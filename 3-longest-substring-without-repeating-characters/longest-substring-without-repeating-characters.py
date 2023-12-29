@@ -16,7 +16,7 @@ class Solution:
                     l += 1
         return res
 
-    def lengthOfLongestSubstring3(self, s: str) -> int:
+    def lengthOfLongestSubstring(self, s: str) -> int:
         h = set()
         l = 0
         res = 0
@@ -28,7 +28,7 @@ class Solution:
             res = max(res, r-l+ 1)
         return res
 
-    def lengthOfLongestSubstring(self, s: str) -> int:
+    def lengthOfLongestSubstring3(self, s: str) -> int:
             c = Counter()
             left = 0
             res = 0
