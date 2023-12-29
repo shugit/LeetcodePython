@@ -55,11 +55,12 @@ class Solution:
         
         if not lists:
             return None
-        while len(lists) > 1:
-            l1 = lists.pop()
-            l2 = lists.pop()
+        arr = deque(lists)
+        while len(arr)> 1:
+            l1 = arr.popleft()
+            l2 = arr.popleft()
             merged_list = self.merge2(l1,l2)
-            lists.append(merged_list)
-        return lists[0]
+            arr.append(merged_list)
+        return arr[0]
 
         
