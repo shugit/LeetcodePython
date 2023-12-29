@@ -14,7 +14,7 @@ class Solution:
             nodes.append(cur.val)
             if not cur.left and not cur.right:
                 if cur.val + curSum == targetSum:
-                    res.append(nodes.copy())
+                    res.append(nodes[:])
             else:
                 if cur.left:
                     find(cur.left, curSum + cur.val)
