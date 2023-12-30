@@ -11,8 +11,9 @@ class Solution:
         q = deque([root])
         order = []
         while q:
+            size = len(q)
             level = []
-            for _ in range(len(q)):
+            for _ in range(size):
                 cur = q.popleft()
                 level.append(cur.val)
                 if cur.left:
