@@ -8,7 +8,8 @@ class Node:
 
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
-        return self.twoPass(node)
+        # return self.twoPass(node)
+        return self.onePass(node)
 
     def onePass(self,node):
         if node is None:
