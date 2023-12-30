@@ -4,7 +4,7 @@ class Solution:
         # prefixSum[0] = 1
         curSum = 0
         res = 0
-        for i, n in enumerate(nums):
+        for n in nums:
             curSum += n
             if curSum - k in prefixSum:
                 res += prefixSum[curSum-k]
