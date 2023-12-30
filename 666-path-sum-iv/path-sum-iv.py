@@ -2,10 +2,9 @@ class Solution:
     def pathSum(self, nums: List[int]) -> int:
         h = {}
         for n in nums:
-            s = str(n)
-            depth = int(s[0])
-            pos = int(s[1])
-            val = int(s[2])
+            depth = n//100
+            pos = (n - depth*100)//10
+            val = n % 10
             h[(depth-1, pos-1)] = val
         res = 0
         def dfs(curSum, depth, pos):
