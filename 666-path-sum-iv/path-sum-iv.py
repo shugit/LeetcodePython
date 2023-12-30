@@ -39,7 +39,7 @@ class Solution:
                 dfs(curSum + val, depth+1, pos*2+1)
             else:
                 res += (curSum+val)
-                print("+",curSum+val)
+                # print("+",curSum+val)
                 return 
         dfs(0,0,0)
         return res
