@@ -22,12 +22,12 @@ class Solution:
             pos = (n - depth*100)//10
             val = n % 10
             h[(depth-1, pos-1)] = val
-        print(h)
+        # print(h)
         res = 0
         def dfs(curSum, depth, pos):
             nonlocal res
             val = h[(depth, pos)]
-            print(val)
+            # print(val)
             left = (depth+1, pos*2)
             right = (depth+1, pos*2+1)
             if left in h and right in h:
