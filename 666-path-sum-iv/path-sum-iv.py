@@ -25,17 +25,19 @@ class Solution:
             h[(depth-1, pos-1)] = val
         res = 0
         def dfs(curSum, depth, pos):
-            if (depth, pos) not in h:
-                return
             nonlocal res
             val = h[(depth, pos)]
             left = (depth+1, pos*2)
             right = (depth+1, pos*2+1)
-            if left not in h and right not in h:
+            if left in h and right in h:
+                 dfs(curSum + val, depth+1, pos*2)
+                 dfs(curSum + val, depth+1, pos*2+1)
+            elif left in h:
+                dfs(curSum + val, depth+1, pos*2)
+            elif right in h:
+                dfs(curSum + val, depth+1, pos*2+1)
+            else:
                 res += (curSum+val)
-                return
-            dfs(curSum + val, depth+1, pos*2)
-            dfs(curSum + val, depth+1, pos*2+1)
-                 
+                return 
         dfs(0,0,0)
         return res
