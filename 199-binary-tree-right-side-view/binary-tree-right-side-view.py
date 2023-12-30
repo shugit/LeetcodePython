@@ -11,9 +11,8 @@ class Solution:
         q = [root]
         order = []
         while q:
-            size = len(q)
             level = []
-            for _ in range(size):
+            for _ in range(len(q)):
                 cur = q.pop(0)
                 level.append(cur.val)
                 if cur.left:
