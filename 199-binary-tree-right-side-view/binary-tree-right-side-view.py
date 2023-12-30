@@ -8,13 +8,12 @@ class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
             return []
-        q = [root]
+        q = deque([root])
         order = []
         while q:
-            size = len(q)
             level = []
-            for _ in range(size):
-                cur = q.pop(0)
+            for _ in range(len(q)):
+                cur = q.popleft()
                 level.append(cur.val)
                 if cur.left:
                     q.append(cur.left)
