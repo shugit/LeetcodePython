@@ -18,16 +18,15 @@ class Solution:
             return cur
 
         for n in nums:
-            depth = n//100
-            pos = (n - depth*100)//10
-            val = n % 10
+            s = str(n)
+            depth = int(s[0])
+            pos = int(s[1])
+            val = int(s[2])
             h[(depth-1, pos-1)] = val
-        # print(h)
         res = 0
         def dfs(curSum, depth, pos):
             nonlocal res
             val = h[(depth, pos)]
-            # print(val)
             left = (depth+1, pos*2)
             right = (depth+1, pos*2+1)
             if left in h and right in h:
@@ -39,7 +38,6 @@ class Solution:
                 dfs(curSum + val, depth+1, pos*2+1)
             else:
                 res += (curSum+val)
-                # print("+",curSum+val)
                 return 
         dfs(0,0,0)
         return res
