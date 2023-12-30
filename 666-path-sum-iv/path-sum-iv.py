@@ -1,22 +1,6 @@
-class Node:
-    def __init__(self, val):
-        self.val = val
-        self.left = None
-        self.right = None
-
 class Solution:
     def pathSum(self, nums: List[int]) -> int:
-        root = Node(nums[0]-110)
         h = {}
-        def dfs(cur, curDepth, depth, pos, val):
-            if curDepth == depth:
-                return Node(val)
-            if pos%2 == 1:
-                cur.left = dfs(cur, curDepth + 1, depth, pos, val)
-            else:
-                cur.left = dfs(cur, curDepth + 1, depth, pos, val)
-            return cur
-
         for n in nums:
             s = str(n)
             depth = int(s[0])
