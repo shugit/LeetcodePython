@@ -7,27 +7,27 @@
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         return self.rightView(root)
-        if not root:
-            return []
-        q = [root]
-        order = []
-        while q:
-            level = []
-            for _ in range(len(q)):
-                cur = q.pop(0)
-                level.append(cur.val)
-                if cur.left:
-                    q.append(cur.left)
-                if cur.right:
-                    q.append(cur.right)
-            right = level.pop()
-            order.append(right)
-        return order
+        # if not root:
+        #     return []
+        # q = [root]
+        # order = []
+        # while q:
+        #     level = []
+        #     for _ in range(len(q)):
+        #         cur = q.pop(0)
+        #         level.append(cur.val)
+        #         if cur.left:
+        #             q.append(cur.left)
+        #         if cur.right:
+        #             q.append(cur.right)
+        #     right = level.pop()
+        #     order.append(right)
+        # return order
                 
 
     def rightView(self, root):
-        if not root:
-            return None
+        # if not root:
+            # return None
         res = []
         def dfs(node, depth):
             if not node:
