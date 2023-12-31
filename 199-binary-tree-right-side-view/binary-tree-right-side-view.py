@@ -6,6 +6,7 @@
 #         self.right = right
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        return self.rightView(root)
         if not root:
             return []
         q = [root]
@@ -23,3 +24,19 @@ class Solution:
             order.append(right)
         return order
                 
+
+    def rightView(self, root):
+        if not root:
+            return None
+        res = []
+        def dfs(node, depth):
+            if not node:
+                return
+            if depth > len(res):
+                res.append(node.val)
+            if node.right:
+                dfs(node.right, depth+1)
+            if node.left:
+                dfs(node.left, depth+1)
+        dfs(root, 1)
+        return res
