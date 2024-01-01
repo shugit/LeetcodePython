@@ -7,16 +7,16 @@ class Solution:
         i, j = len(num1)-1, len(num2)-1
         while j >= 0:
             add = carry + int(num1[i]) + int(num2[j])
-            res.append(add % 10)
+            res.append(str(add % 10))
             carry = add // 10
             i -= 1
             j -= 1
         while i >= 0 :
             add = carry + int(num1[i])
-            res.append(add % 10)
+            res.append(str(add % 10))
             carry = add//10
             i -= 1
         if carry == 1:
-            res.append(carry)
+            res.append(str(carry))
         res.reverse()
-        return "".join(map(str,res))
+        return "".join(res)
