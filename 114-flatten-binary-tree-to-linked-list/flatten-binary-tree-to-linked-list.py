@@ -5,7 +5,43 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def flatten2(self, root: Optional[TreeNode]) -> None:
+    def flatten(self, root: Optional[TreeNode]) -> None:
+        return self.sol1(root)
+    def sol1(self, root):
+        if not root:
+            return None
+        def dfs(node):
+            if not node:
+                return
+            dfs(node.left)
+            dfs(node.right)
+            left = node.left
+            right = node.right
+            node.left = None
+            node.right = left
+            cur = node
+            while cur.right:
+                cur = cur.right
+            cur.right = right
+        dfs(root)
+
+
+    def sol2(self, root):
+        node_list = []
+        def preorder(curr):
+            if not curr:
+                return
+            node_list.append(curr)
+            preorder(curr.left)
+            preorder(curr.right)
+        preorder(root)
+        for i in range(0, len(node_list)):
+            node_list[i].left = None
+            if i + 1 < len(node_list):
+                node_list[i].right = node_list[i+1]
+        return
+
+    def sol3(self, root: Optional[TreeNode]) -> None:
         """
         Do not return anything, modify root in-place instead.
         """
@@ -22,19 +58,3 @@ class Solution:
             return last
         preorder(root)
         return 
-
-    def flatten(self, root: Optional[TreeNode]) -> None:
-        node_list = []
-        def preorder(curr):
-            if not curr:
-                return
-            node_list.append(curr)
-            preorder(curr.left)
-            preorder(curr.right)
-        preorder(root)
-        for i in range(0, len(node_list)):
-            node_list[i].left = None
-            if i + 1 < len(node_list):
-                node_list[i].right = node_list[i+1]
-        return
-
