@@ -32,12 +32,9 @@ class MaxStack:
         return self.l.val
         
     def peekMax(self) -> int:
-        self.refresh()
-        return -self.q[0]
-    
-    def refresh(self):
         while -self.q[0] not in self.h:
             heapq.heappop(self.q)
+        return -self.q[0]
 
     def popMax(self) -> int:
         res = self.peekMax()
