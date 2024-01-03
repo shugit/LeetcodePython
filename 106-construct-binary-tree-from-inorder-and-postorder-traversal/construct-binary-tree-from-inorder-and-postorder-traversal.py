@@ -9,9 +9,9 @@ class Solution:
         def dfs(inorder, postorder):
             if not inorder or not postorder:
                 return None
-            root = TreeNode(postorder.pop())
+            root = TreeNode(postorder[-1])
             idx = inorder.index(root.val)
             root.left = dfs(inorder[0:idx], postorder[0:idx])
-            root.right = dfs(inorder[idx+1:], postorder[idx:])
+            root.right = dfs(inorder[idx+1:], postorder[idx:-1])
             return root
         return dfs(inorder, postorder)
