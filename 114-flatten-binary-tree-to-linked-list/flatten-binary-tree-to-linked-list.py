@@ -8,7 +8,7 @@ class Solution:
     def flatten(self, root: Optional[TreeNode]) -> None:
         return self.sol3(root)
 
-    def sol3(self, root):
+    def sol4(self, root):
         if not root:
             return None
         stack = [root]
