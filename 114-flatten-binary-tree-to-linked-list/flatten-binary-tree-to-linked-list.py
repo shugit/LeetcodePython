@@ -6,7 +6,28 @@
 #         self.right = right
 class Solution:
     def flatten(self, root: Optional[TreeNode]) -> None:
-        return self.sol1(root)
+        return self.sol3(root)
+
+    def sol3(self, root):
+        if not root:
+            return None
+        stack = [root]
+        while stack:
+            node = stack.pop()
+            if node.left and node.right:
+                stack.append(node.right)
+                stack.append(node.left)
+                node.left, node.right = None, node.left
+            elif node.right:
+                stack.append(node.right)
+            elif node.left:
+                stack.append(node.left)
+                node.left, node.right = None, node.left
+            elif len(stack) < 1:
+                break
+            else:
+                node.right = stack[-1]
+
     def sol1(self, root):
         if not root:
             return None
@@ -14,7 +35,7 @@ class Solution:
             if not node:
                 return
             dfs(node.left)
-            dfs(node.right)
+            rTail = dfs(node.right)
             left = node.left
             right = node.right
             node.left = None
@@ -23,6 +44,7 @@ class Solution:
             while cur.right:
                 cur = cur.right
             cur.right = right
+            return 
         dfs(root)
 
 
