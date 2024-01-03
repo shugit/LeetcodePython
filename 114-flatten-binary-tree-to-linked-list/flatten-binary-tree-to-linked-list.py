@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     def flatten(self, root: Optional[TreeNode]) -> None:
-        return self.sol3(root)
+        return self.sol4(root)
 
     def sol4(self, root):
         if not root:
