@@ -1,5 +1,32 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
+        return self.sol2(s,t)
+    
+    def sol2(self, s, t):
+        l, r = 0, 0
+        window = Counter()
+        need = Counter(t)
+        matched = 0
+        res = ""
+        mini = inf
+        while r < len(s):
+            c = s[r]
+            window[c] += 1
+            if c in need and need[c] == window[c]:
+                matched += 1
+            while matched == len(need):
+                if r - l + 1 < mini:
+                    mini = r - l + 1
+                    res = s[l: r+1]
+                d = s[l]
+                if d in need and window[d] == need[d]:
+                    matched -= 1
+                l += 1
+                window[d] -= 1
+            r += 1
+        return res
+
+    def sol1(self, s, t):
         window = {}
         count = {}
         for c in t:
