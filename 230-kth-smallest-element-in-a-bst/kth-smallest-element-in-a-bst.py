@@ -14,6 +14,8 @@ class Solution:
                 return 
             find(curr.left)
             res.append(curr.val)
+            if len(res) == k:
+                return
             find(curr.right)
         find(root)
         return res[k-1]
