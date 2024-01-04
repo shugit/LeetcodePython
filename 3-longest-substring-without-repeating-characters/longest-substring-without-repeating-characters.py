@@ -4,8 +4,6 @@ class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         return self.sol4(s)
     def sol4(self, s):
-        if not s:
-            return 0
         window = Counter()
         maxi = -inf
         l, r = 0, 0
@@ -18,7 +16,7 @@ class Solution:
                 l += 1
             maxi = max(r-l+1, maxi)
             r += 1
-        return maxi
+        return maxi if maxi != -inf else 0
 
 
     def sol1(self, s):
