@@ -1,12 +1,12 @@
 class Solution:
     def slidingPuzzle(self, board: List[List[int]]) -> int:
-        j, i = -1, -1
-        for ri in range(len(board)):
-            for rj in range(len(board[ri])):
-                if board[ri][rj] == 0:
-                    i,j = ri, rj
-                    break
+        def findZero(board):
+            for ri in range(len(board)):
+                for rj in range(len(board[ri])):
+                    if board[ri][rj] == 0:
+                        return ri, rj
         # print(i,j, board[i][j])
+        i, j = findZero(board)
         q = deque([(i, j, board)])
         # print("".join(["".join(map(str,row)) for row in board]))
         visited = set("".join(["".join(str(row)) for row in board]))
