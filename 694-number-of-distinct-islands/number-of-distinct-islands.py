@@ -15,7 +15,7 @@ class Solution:
                 if grid[i][j] == 1:
                     path = []
                     dfs(i, j, 0, 0)
-                    print(i,j, path)
+                    # print(i,j, path)
                     res.add(" ".join(["".join(map(str, row)) for row in path]))
-        print(res)
+        # print(res)
         return len(res)
