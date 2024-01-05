@@ -6,9 +6,8 @@ class Solution:
         deadset = set(deadends)
         if "0000" in deadset:
             return -1
-        step = -1
+        step = 0
         while q:
-            step += 1
             for i in range(0, len(q)):
                 node = q.popleft()
                 if node == target:
@@ -23,6 +22,7 @@ class Solution:
                     if n2 not in visited and n2 not in deadset:
                         q.append(n2)
                         visited.add(n2)
+            step += 1
         return -1
             
                 
