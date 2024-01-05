@@ -6,5 +6,8 @@ class Solution:
                 stack.append(0)
             else:
                 n = stack.pop()
-                stack[-1] += max(2 * n, 1)
+                if n == 0 :
+                    stack[-1] += 1
+                else:
+                    stack[-1] += 2 * n
         return stack.pop()
