@@ -13,7 +13,6 @@ class Solution:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
-            print(level, total)
             if total > maxi:
                 maxi = total
                 res = level
