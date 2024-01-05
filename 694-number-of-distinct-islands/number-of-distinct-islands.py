@@ -4,7 +4,6 @@ class Solution:
         m, n = len(grid), len(grid[0])
         def dfs(i, j, pi, pj):
             path.append([pi,pj])
-            print(i,j,pi,pj)
             for di, dj in [[1,0], [-1,0], [0,1], [0,-1]]:
                 ni, nj = i + di, j + dj
                 if 0 <= ni < m and 0 <= nj < n and grid[ni][nj] == 1:
@@ -17,7 +16,5 @@ class Solution:
                     path = []
                     grid[i][j] = 0
                     dfs(i, j, 0, 0)
-                    print(i,j, path)
                     res.add(" ".join(["".join(map(str, row)) for row in path]))
-        # print(res)
         return len(res)
