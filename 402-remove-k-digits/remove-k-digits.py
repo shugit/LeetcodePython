@@ -7,8 +7,7 @@ class Solution:
                 k -= 1
             if not stack and n == "0":
                 continue
-            else:
-                stack.append(n)
+            stack.append(n)
         while k > 0 and stack:
             stack.pop()
             k -= 1
