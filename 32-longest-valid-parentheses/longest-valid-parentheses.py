@@ -3,14 +3,14 @@ class Solution:
         stack = []
         dp = [0] * (len(s)+1)
         for i, c in enumerate(s):
-            if s[i] == "(":
+            if c == "(":
                 stack.append(i)
-                dp[i+1] = 0
+                dp[i] = 0
             else:
                 if stack:
                     leftIdx = stack.pop()
-                    size = i - leftIdx + 1 + dp[leftIdx]
-                    dp[i+1] = size
+                    size = i - leftIdx + 1 + dp[leftIdx-1]
+                    dp[i] = size
                 else:
-                    dp[i+1] = 0
+                    dp[i] = 0
         return max(dp)
