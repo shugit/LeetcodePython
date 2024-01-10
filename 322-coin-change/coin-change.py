@@ -1,6 +1,7 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        return self.sol2(coins, amount)
+        return self.sol1(coins, amount)
+
     def sol2(self, coins, amount):
         memo = {0:0}
         def dp(n):
@@ -18,20 +19,13 @@ class Solution:
             return memo[n]
         return dp(amount)
 
-
-
     def sol1(self, coins, amount):
-        n = len(coins)
-        dp =  [float("inf") for _ in range(amount + 1)]
+        dp =  [inf for _ in range(amount + 1)]
         
         dp[0] = 0
-        for i in range(1, n+1):
-            cur = coins[i-1]
-            for j in range(1, amount + 1):
-                if j-cur >= 0:
-                    dp[j] = min(dp[j-cur] + 1, dp[j])
-        # print(dp)
-        if dp[amount] == float("inf"):
-            return -1
-        else:
-            return dp[amount]
+        for i in range(1, amount+1):
+            for coin in coins:
+                if i - coin < 0:
+                    continue
+                dp[i] = min(dp[i], dp[i-coin] + 1)
+        return dp[amount] if dp[amount] != inf else -1
