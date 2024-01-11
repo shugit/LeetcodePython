@@ -17,7 +17,6 @@ class Solution:
             return memo[i][j]
         for j in range(n):
             dp(n-1, j)
-        print(memo)
         return min(memo[n-1])
 
     def downTop(self, matrix):
