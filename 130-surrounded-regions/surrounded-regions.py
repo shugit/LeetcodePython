@@ -1,18 +1,14 @@
 class Solution:
     def solve(self, board: List[List[str]]) -> None:
-        """
-        Do not return anything, modify board in-place instead.
-        """
         m = len(board)
         n = len(board[0])
-        directions = [[1,0],[-1,0],[0,1],[0,-1]]
         def dfs(i,j):
             if i < 0 or i >= m or j < 0 or j >= n:
                 return
             if board[i][j] != "O":
                 return
             board[i][j] = "T"
-            for x,y in directions:
+            for x,y in [[1,0],[-1,0],[0,1],[0,-1]]:
                 new_i = x + i 
                 new_j = y + j
                 dfs(new_i,new_j) 
