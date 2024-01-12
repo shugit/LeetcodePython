@@ -1,6 +1,6 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
-        return self.topDown(s, wordDict)
+        return self.downTop(s, wordDict)
 
     def backtrack_naive(self, s: str, wordDict: List[str]) -> List[str]:
         words = set(wordDict)
@@ -39,11 +39,15 @@ class Solution:
             return res
         return dp(0)
 
-
-
     def downTop(self, s: str, wordDict: List[str]) -> List[str]:
         dp = [[] for _ in range(len(s)+1)]
-        for i in range(1,len(s)+1):
+        dp[0] = [""]
+        for i in range(0, len(s)+1):
             for w in wordDict:
-                break
-        return a
+                if i + len(w) <= len(s) and s[i:i+len(w)] == w and len(dp[i]) >= 1:
+                    for prefix in dp[i]:
+                        if prefix == "":
+                            dp[i+len(w)].append(w)
+                        else:
+                            dp[i+len(w)].append(prefix +" " + w)
+        return dp[len(s)]
