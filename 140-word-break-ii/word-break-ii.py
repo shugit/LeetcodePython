@@ -18,7 +18,7 @@ class Solution:
         return res
 
     def topDown(self, s: str, wordDict: List[str]) -> List[str]:
-        words = set(wordDict)
+        # words = set(wordDict)
         path = []
         memo = {}
         def dp(i):
@@ -27,7 +27,7 @@ class Solution:
             if i in memo:
                 return memo[i]
             res = []
-            for w in words:
+            for w in wordDict:
                 if i + len(w) <= len(s) and s[i: i+len(w)] == w:
                     suffixs = dp(i+len(w))
                     for suffix in suffixs:
@@ -42,5 +42,8 @@ class Solution:
 
 
     def downTop(self, s: str, wordDict: List[str]) -> List[str]:
-        path = []
-        return path
+        dp = [[] for _ in range(len(s)+1)]
+        for i in range(1,len(s)+1):
+            for w in wordDict:
+                break
+        return a
