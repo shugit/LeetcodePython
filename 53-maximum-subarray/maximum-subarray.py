@@ -1,6 +1,8 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
+        # return self.downTop(nums)
         return self.topDown(nums)
+
     def topDown(self, nums: List[int]) -> int:
         if not nums:
             return 0
@@ -9,12 +11,11 @@ class Solution:
             if i == -1:
                 return 0
             pre = dp(i-1)
-            memo[i] = max(pre + nums[i], nums[i])
-            return memo[i]
+            cur = max(pre + nums[i], nums[i])
+            memo[i] = cur
+            return cur
         dp(len(nums)-1)
         return max(memo.values())
-
-
 
     def downtop(self, nums):
         n = len(nums)
