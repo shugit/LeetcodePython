@@ -1,6 +1,6 @@
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
-        return self.downTop(amount, coins)
+        return self.topDown(amount, coins)
 
     def downTop(self, amount: int, coins: List[int]) -> int:
         dp = [[0] * (amount+1) for _ in range(len(coins)+1)]
@@ -14,7 +14,21 @@ class Solution:
                     dp[i][j] = dp[i-1][j]
         return dp[len(coins)][amount]
 
-
+    def topDown(self, amount: int, coins: List[int]) -> int:
+        memo = {}
+        def dp(i, j):
+            if i == -1:
+                return 0
+            if j == 0:
+                return 1
+            if (i, j) in memo:
+                return memo[(i,j)]
+            if j - coins[i] >= 0:
+                memo[(i, j)] = dp(i-1, j) + dp(i, j-coins[i])
+            else:
+                memo[(i, j)] = dp(i-1, j)
+            return memo[(i, j)]
+        return dp(len(coins)-1, amount)
 
 
 
