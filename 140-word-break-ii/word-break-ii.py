@@ -44,7 +44,7 @@ class Solution:
         dp[0] = [""]
         for i in range(0, len(s)+1):
             for w in wordDict:
-                if i + len(w) <= len(s) and s[i:i+len(w)] == w and len(dp[i]) >= 1:
+                if len(dp[i]) >= 1 and i + len(w) <= len(s) and s[i:i+len(w)] == w:
                     for prefix in dp[i]:
                         if prefix == "":
                             dp[i+len(w)].append(w)
