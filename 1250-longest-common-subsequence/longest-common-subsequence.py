@@ -13,8 +13,7 @@ class Solution:
                 return memo[(i, j)]
             else:
                 res =  max(dp(i+1, j),
-                            dp(i, j+1),
-                            dp(i+1, j+1))
+                            dp(i, j+1))
                 memo[(i, j)] = res
                 return memo[(i, j)]
         return dp(0,0)
