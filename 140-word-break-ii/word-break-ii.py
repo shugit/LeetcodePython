@@ -43,11 +43,12 @@ class Solution:
         dp = [ [] for _ in range(len(s)+1)]
         dp[0] = [""]
         for i in range(0, len(s)+1):
-            for w in wordDict:
-                if dp[i] and i + len(w) <= len(s) and s[i:i+len(w)] == w:
-                    for prefix in dp[i]:
-                        if prefix == "":
-                            dp[i+len(w)].append(w)
-                        else:
-                            dp[i+len(w)].append(prefix +" " + w)
+            if dp[i]:
+                for w in wordDict:
+                    if i + len(w) <= len(s) and s[i:i+len(w)] == w:
+                        for prefix in dp[i]:
+                            if prefix == "":
+                                dp[i+len(w)].append(w)
+                            else:
+                                dp[i+len(w)].append(prefix +" " + w)
         return dp[len(s)]
