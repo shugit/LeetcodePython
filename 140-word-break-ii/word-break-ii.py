@@ -40,11 +40,11 @@ class Solution:
         return dp(0)
 
     def downTop(self, s: str, wordDict: List[str]) -> List[str]:
-        dp = [[] for _ in range(len(s)+1)]
+        dp = [ [] for _ in range(len(s)+1)]
         dp[0] = [""]
         for i in range(0, len(s)+1):
             for w in wordDict:
-                if len(dp[i]) >= 1 and i + len(w) <= len(s) and s[i:i+len(w)] == w:
+                if dp[i] and i + len(w) <= len(s) and s[i:i+len(w)] == w:
                     for prefix in dp[i]:
                         if prefix == "":
                             dp[i+len(w)].append(w)
