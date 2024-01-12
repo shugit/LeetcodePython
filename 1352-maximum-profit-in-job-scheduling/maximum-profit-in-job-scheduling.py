@@ -4,7 +4,6 @@ class Solution:
         jobs.sort(key=lambda x:x[0])
         startTime.sort()
         memo = {}
-        print(jobs)
         def dfs(i):
             if i >= len(startTime):
                 return 0
