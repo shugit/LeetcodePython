@@ -1,7 +1,7 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        # return self.downTop(nums)
-        return self.topDown(nums)
+        return self.downTop(nums)
+        # return self.topDown(nums)
 
     def topDown(self, nums: List[int]) -> int:
         if not nums:
@@ -17,13 +17,15 @@ class Solution:
         dp(len(nums)-1)
         return max(memo.values())
 
-    def downtop(self, nums):
+    def downTop(self, nums):
         n = len(nums)
         dp = {}
-        dp[0] = nums[0]
+        pre = nums[0]
+        maxi = nums[0]
         for i in range(1, n):
-            dp[i] = max(dp[i-1]+nums[i], nums[i])
-        return max(dp.values())
+            pre = max(pre+nums[i], nums[i])
+            maxi = max(maxi, pre)
+        return maxi
 
     def slindingwindow(self, nums: List[int]) -> int:
         maxi = float("-inf")
