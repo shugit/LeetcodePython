@@ -10,7 +10,6 @@ class Solution:
             if i in memo:
                 return memo[i]
             index = bisect_left(startTime, jobs[i][1])
-            res = max(jobs[i][2] + dfs(index), dfs(i+1))
-            memo[i] = res
+            memo[i] = max(jobs[i][2] + dfs(index), dfs(i+1))
             return memo[i]
         return dfs(0)
