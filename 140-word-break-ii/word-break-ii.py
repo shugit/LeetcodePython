@@ -22,11 +22,11 @@ class Solution:
         path = []
         memo = {}
         def dp(i):
-            res = []
             if i == len(s):
                 return [""]
             if i in memo:
                 return memo[i]
+            res = []
             for w in words:
                 if i + len(w) <= len(s) and s[i: i+len(w)] == w:
                     suffixs = dp(i+len(w))
