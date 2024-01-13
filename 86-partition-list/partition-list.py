@@ -16,8 +16,10 @@ class Solution:
             else:
                 p2.next = head
                 p2 = p2.next
-            tmp = head.next
-            head.next = None
-            head = tmp
+            # tmp = head.next
+            # head.next = None
+            # head = tmp
+            head = head.next
         p1.next = dummy2.next
+        p2.next = None
         return dummy1.next
