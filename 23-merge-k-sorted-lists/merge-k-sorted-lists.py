@@ -4,6 +4,24 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        return self.heapSol(lists)
+
+    def heapSol(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        ListNode.__lt__ = lambda n1, n2: n1.val < n2.val
+        dummy = ListNode(-1)
+        p = dummy
+        q = []
+        for head in lists:
+            if head:
+                heapq.heappush(q, (head.val, head))
+        while q:
+            node = heapq.heappop(q)[1]
+            p.next = node
+            if node.next:
+                heapq.heappush(q, (node.next.val, node.next))
+            p = p.next
+        return dummy.next
     
     def merge2(self, l1,l2):
         dummy = ListNode(0)
@@ -28,7 +46,7 @@ class Solution:
             p2 = p2.next
         return dummy.next
         
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    def mergeSortSol(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         def merge(l1,l2):
             dummy = ListNode(-1)
             curr = dummy
