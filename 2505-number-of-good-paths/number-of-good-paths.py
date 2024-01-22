@@ -34,9 +34,9 @@ class Solution:
                     if vals[node] >= vals[neibor]:
                         union_set(node, neibor)
             # print(parent)
-            group = {}
+            group = defaultdict(int)
             for node in nodes:
-                group[find(node)] = group.get(find(node), 0) + 1
+                group[find(node)] +=  1
             for size in group.values():
                 res += (size * (size+1))//2
         return res
