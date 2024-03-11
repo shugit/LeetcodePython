@@ -14,8 +14,6 @@ class Solution:
                 self.ended = True
             else:
                 self.myBuf += buf4[:res]
-                print(buf4, res, self.myBuf)
-        print(n, self.myBuf)
         if n > len(self.myBuf):
             i = 0
             while i < len(buf) and buf[i] != '':
@@ -28,5 +26,4 @@ class Solution:
         for i in range(n):
             buf[i] = self.myBuf[i]
         self.myBuf = self.myBuf[n:]
-        print(n,buf[:n], self.myBuf)
         return n
