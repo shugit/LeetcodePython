@@ -1,6 +1,6 @@
 class BSTIterator:
     def __init__(self, root: Optional[TreeNode]):
-        self.stack = deque([])
+        self.stack = deque()
         self.push_left(root)
     
     def push_left(self, node):
