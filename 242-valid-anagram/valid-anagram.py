@@ -1,5 +1,12 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
+        return self.sol1(s, t)
+    def sol1(self, s: str, t: str) -> bool:
+        c1 = Counter(s)
+        c2 = Counter(t)
+        return c1 == c2
+
+    def sol2(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
         h = {}
