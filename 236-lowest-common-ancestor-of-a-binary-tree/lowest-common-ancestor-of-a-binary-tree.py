@@ -1,6 +1,6 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':    
-        return self.sol2(root, p, q)
+        return self.sol1(root, p, q)
     def sol2(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         def find(node):
             if not node or node == p or node == q:
