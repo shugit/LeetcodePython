@@ -1,6 +1,8 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        return self.p2(nums)
+        return self.sol2(nums)
+
+    def sol1(self, nums: List[int]) -> List[int]:
         n = len(nums)
         prefix = [1] * n
         postfix = [1] * n
@@ -14,12 +16,11 @@ class Solution:
             res[i] = prefix[i] * postfix[i]
         return res
 
-    def p2(self, nums):
+    def sol2(self, nums):
         n = len(nums)
         res = [1] * n
         for i in range(1,n):
             res[i] = res[i-1] * nums[i-1]
-        # print(res)
         post = 1
         for i in range(n-2, -1, -1):
             post = post * nums[i+1]
