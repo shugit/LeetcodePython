@@ -9,7 +9,7 @@ class NumMatrix:
             self.preSum[i][0] += self.preSum[i-1][0]
             for j in range(1, n):
                 self.preSum[i][j] += self.preSum[i-1][j] + self.preSum[i][j-1] - self.preSum[i-1][j-1]
-        print(self.preSum)
+        # print(self.preSum)
 
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
         left = self.preSum[row2][col1 - 1] if col1 > 0 else 0
