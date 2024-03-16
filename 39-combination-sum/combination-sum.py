@@ -2,7 +2,7 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
         subset = []
-        candidates.sort(reverse=True)
+        # candidates.sort(reverse=True)
         def bt(i, curSum):
             if curSum == target:
                 res.append(subset[:])
