@@ -7,9 +7,9 @@ class Solution:
             if low <= node.val <= high:
                 nonlocal res
                 res += node.val
-            if node.val > low:
-                dfs(node.left)
-            if node.val < high:
-                dfs(node.right)
+            # if node.val > low:
+            dfs(node.left)
+            # if node.val < high:
+            dfs(node.right)
         dfs(root)
         return res
