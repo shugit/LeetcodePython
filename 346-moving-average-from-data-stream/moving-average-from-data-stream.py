@@ -3,12 +3,15 @@ class MovingAverage:
         self.queue = deque([])
         self.size = size
         self.count = 0
+        self.preSum = 0
 
     def next(self, val: int) -> float:
         if len(self.queue) < self.size:
+            self.preSum += val
             self.queue.append(val)     
         else:
-            self.queue.popleft()
+            n = self.queue.popleft()
             self.queue.append(val)
-        return 1.0 * sum(self.queue)/len(self.queue)
+            self.preSum = self.preSum - n + val
+        return 1.0 * self.preSum/len(self.queue)
         
