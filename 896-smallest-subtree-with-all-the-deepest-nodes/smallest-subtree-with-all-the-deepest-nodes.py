@@ -11,6 +11,5 @@ class Solution:
                 return leftLca, leftDepth
             else:
                 return rightLca, rightDepth
-
         lca, _ = find(root, 0)
         return lca
