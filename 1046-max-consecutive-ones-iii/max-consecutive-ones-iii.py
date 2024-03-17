@@ -4,10 +4,12 @@ class Solution:
         left = 0
         flipped = 0
         for right in range(0, len(nums)):
-            flipped += (1-nums[right])
+            if nums[right] == 0:
+                flipped += 1
             while flipped > k:
                 flipped -= (1-nums[left])
                 left += 1
             maxi = max(maxi, right - left + 1)
         return maxi
+        # return right - left + 1
 
