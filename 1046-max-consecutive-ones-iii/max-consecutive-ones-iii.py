@@ -7,7 +7,8 @@ class Solution:
             if nums[right] == 0:
                 flipped += 1
             while flipped > k:
-                flipped -= (1-nums[left])
+                if nums[left] == 0:
+                    flipped -= 1
                 left += 1
             maxi = max(maxi, right - left + 1)
         return maxi
