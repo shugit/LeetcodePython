@@ -7,6 +7,6 @@ class Solution:
             if left >= s and right <= e:
                 removed += 1
             else:
-                s, e = min(s, left), max(e, right)
+                s, e = s, max(e, right)
         return len(intervals) - removed
             
