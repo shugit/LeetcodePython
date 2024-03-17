@@ -8,6 +8,5 @@ class Solution:
                 removed += 1
             else:
                 s, e = min(s, left), max(e, right)
-            
         return len(intervals) - removed
             
