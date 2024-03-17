@@ -6,11 +6,11 @@ class Solution:
         for right in range(0, len(nums)):
             if nums[right] == 0:
                 flipped += 1
-            while flipped > k:
+            if flipped > k:
                 if nums[left] == 0:
                     flipped -= 1
                 left += 1
-            maxi = max(maxi, right - left + 1)
-        return maxi
-        # return right - left + 1
+            # maxi = max(maxi, right - left + 1)
+        # return maxi
+        return right - left + 1
 
