@@ -5,11 +5,11 @@ class Solution:
         self.preSum = [0]
         for i in range(len(w)):
             self.preSum.append(self.preSum[-1] + w[i])
-        print(self.preSum)
+        # print(self.preSum)
 
     def pickIndex(self) -> int:
         t = self.r.randint(1, self.preSum[-1])
-        print(t)
+        # print(t)
         def find(nums):
             l, r = 0, len(nums)
             while l < r:
