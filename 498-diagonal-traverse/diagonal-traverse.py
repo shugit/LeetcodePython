@@ -1,13 +1,26 @@
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
-        d = defaultdict(list)
-        for i in range(len(mat)):
-            for j in range(len(mat[i])):
-                d[i+j].append(mat[i][j])
+        m = len(mat)
+        n = len(mat[0])
+        
         res = []
-        for key, value in d.items():
-            if key % 2 == 0:
-                res += value[::-1]
+        i, j = 0, 0
+        for _ in range(m * n):
+            res.append(mat[i][j])
+            if (i + j) % 2 == 1:
+                if i == m - 1:
+                    j += 1
+                elif j == 0:
+                    i += 1
+                else:
+                    i += 1
+                    j -= 1
             else:
-               res += value
+                if j == n - 1:
+                    i += 1
+                elif i == 0:
+                    j += 1
+                else:
+                    i -= 1
+                    j += 1
         return res
