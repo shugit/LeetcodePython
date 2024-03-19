@@ -3,7 +3,7 @@
 
 class Solution:
     def __init__(self):
-        self.myBuf = []
+        self.myBuf = deque([])
         self.ended = False
 
     def read(self, buf: List[str], n: int) -> int:
@@ -14,16 +14,8 @@ class Solution:
                 self.ended = True
             else:
                 self.myBuf += buf4[:res]
-        if n > len(self.myBuf):
-            i = 0
-            while i < len(buf) and buf[i] != '':
-                buf[i] = ''
-                i += 1
-            for i in range(len(self.myBuf)):
-                buf[i] = self.myBuf[i]
-            self.myBuf = []
-            return len(buf)
-        for i in range(n):
-            buf[i] = self.myBuf[i]
-        self.myBuf = self.myBuf[n:]
-        return n
+        i = 0
+        while self.myBuf and i < n:
+            buf[i] = self.myBuf.popleft()
+            i += 1
+        return i
