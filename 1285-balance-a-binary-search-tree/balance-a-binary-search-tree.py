@@ -7,7 +7,6 @@ class Solution:
             inorder(root.left)
             path.append(root)
             inorder(root.right)
-
         inorder(root)
         def build(l , r):
             if l > r: 
