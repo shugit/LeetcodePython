@@ -1,24 +1,34 @@
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
-        cache = {}
-        def dfs(i, j):
-            if (i, j) in cache:
-                return cache[(i, j)]
-            if i >= len(s) and j >= len(p):
+        memo = [[-1] * (len(p)) for _ in range(len(s))]
+        def dp(i, j):
+            print(i,j)
+            if j == len(p):
+                return (i == len(s))
+            if i == len(s):
+                # memo[i][j] = True
+                if (len(p) - j) % 2 == 1:
+                    return False
+                for j in range(j+1, len(p), 2):
+                    if p[j] != "*":
+                        return False
                 return True
-            if j >= len(p):
-                return False
-            match = i < len(s) and (s[i] == p[j] or p[j] == ".")
-            if (j + 1) < len(p) and p[j + 1] == "*": #the first char in pattern string is never going to be '*
-                        # don't use "*"
-                cache[(i, j)] = (dfs(i, j + 2)) or (match and dfs(i + 1, j)) 
-                                             # use "*", and we can only use "*" if there is match
-                return cache[(i, j)]
-            if match:
-                cache[(i, j)] = dfs(i + 1, j + 1)
-                return cache[(i, j)]
+            if memo[i][j] != -1:
+                return memo[i][j]
+            res = False
+            if s[i] == p[j] or p[j] == '.':
+                if j < len(p) - 1 and p[j+1] == "*":
+                    res = dp(i, j + 2) or dp(i + 1, j)
+                else:
+                    res = dp(i + 1, j + 1)
+            else:
+                if j < len(p) - 1 and p[j+1] == "*":
+                    res = dp(i, j + 2)
+                else:
+                    res = False
+            memo[i][j] = res
+            return memo[i][j]
+        dp(0, 0)
+        return memo[0][0]
+
             
-            cache[(i, j)] = False
-            return False
-            
-        return dfs(0, 0)
