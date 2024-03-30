@@ -15,6 +15,7 @@ class Solution:
                 for k in range(j+1, len(p), 2):
                     if p[k] != "*":
                         memo[i][j] = False
+                        return False
                 return memo[i][j]
             res = False
             if s[i] == p[j] or p[j] == '.':
