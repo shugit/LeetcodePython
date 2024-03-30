@@ -8,7 +8,6 @@ class Solution:
                 memo[i][j] = (i == len(s))
                 return memo[i][j]
             if i == len(s):
-                memo[i][j] = True
                 if (len(p) - j) % 2 == 1:
                     memo[i][j] = False
                     return False
@@ -16,6 +15,7 @@ class Solution:
                     if p[k] != "*":
                         memo[i][j] = False
                         return False
+                memo[i][j] = True
                 return memo[i][j]
             res = False
             if s[i] == p[j] or p[j] == '.':
