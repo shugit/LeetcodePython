@@ -1,19 +1,21 @@
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
-        memo = [[-1] * (len(p)) for _ in range(len(s))]
+        memo = [[-1] * (len(p)+1) for _ in range(len(s)+1)]
         def dp(i, j):
-            print(i,j)
+            if memo[i][j] != -1:
+                return memo[i][j]
             if j == len(p):
-                return (i == len(s))
+                memo[i][j] = (i == len(s))
+                return memo[i][j]
             if i == len(s):
-                # memo[i][j] = True
                 if (len(p) - j) % 2 == 1:
-                    return False
+                    memo[i][j] = False
+                    return memo[i][j]
                 for j in range(j+1, len(p), 2):
                     if p[j] != "*":
-                        return False
-                return True
-            if memo[i][j] != -1:
+                        memo[i][j] = False
+                        return memo[i][j]
+                memo[i][j] = True
                 return memo[i][j]
             res = False
             if s[i] == p[j] or p[j] == '.':
