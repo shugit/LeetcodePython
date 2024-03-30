@@ -11,6 +11,7 @@ class Solution:
                 memo[i][j] = True
                 if (len(p) - j) % 2 == 1:
                     memo[i][j] = False
+                    return False
                 for k in range(j+1, len(p), 2):
                     if p[k] != "*":
                         memo[i][j] = False
