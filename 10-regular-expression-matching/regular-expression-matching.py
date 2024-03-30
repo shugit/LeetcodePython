@@ -10,11 +10,17 @@ class Solution:
             if i == len(s):
                 if (len(p) - j) % 2 == 1:
                     memo[i][j] = False
-                    return memo[i][j]
-                for j in range(j+1, len(p), 2):
-                    if p[j] != "*":
+                    print("== 1", memo[i][j])
+                    # return memo[i][j]
+                for k in range(j+1, len(p), 2):
+                    if p[k] != "*":
                         memo[i][j] = False
-                        return memo[i][j]
+                        print("not *", memo[i][j])
+                        # return memo[i][j]
+                print(memo[i][j])
+                if memo[i][j] == False:
+                    print("return", memo[i][j])
+                    return memo[i][j]
                 memo[i][j] = True
                 return memo[i][j]
             res = False
